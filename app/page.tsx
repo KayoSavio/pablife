@@ -175,8 +175,11 @@ const Button = ({ children, onClick }: { children: React.ReactNode, onClick?: ()
   </button>
 )
 
-const FeatureCard = ({ number, title, desc }: { number: string, title: string, desc: string }) => (
+const FeatureCard = ({ number, title, desc, imgSrc }: { number: string, title: string, desc: string, imgSrc: string }) => (
   <div className="border-t bg-black/60 p-6 pb-12 border-white/10 hover:border-pink-500 transition-colors duration-500 group cursor-default pointer-events-auto">
+    <div className='w-full flex justify-end'>
+      <img src={imgSrc} className='w-36 h-36' alt="" />
+    </div>
     <span className="font-mono text-xs text-pink-500 mb-2 block">{number}</span>
     <h3 className="text-xl md:text-2xl font-black text-white mb-4 uppercase tracking-tighter group-hover:translate-x-2 transition-transform">{title}</h3>
     <p className="text-gray-100 text-sm md:text-base leading-relaxed max-w-xs">{desc}</p>
@@ -345,25 +348,27 @@ export default function Home() {
                 <div className="max-w-[1400px] mx-auto w-full">
                   <div className="mb-16 border-b border-white/10 pb-8 flex justify-between items-end">
                     <h2 className="text-5xl font-black uppercase tracking-tighter">
-                        Pilares do<br/>Ecossistema
+                        Pilares do<br/><span className="text-pink-500">Ecossistema</span>
                     </h2>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
                     <FeatureCard 
-                      
                         number="01" 
                         title="Mentalidade" 
-                        desc="Reprogramação cognitiva para foco e resiliência." 
+                        desc="Reprogramação cognitiva para foco e resiliência."
+                        imgSrc="/medusa.png"
                     />
                     <FeatureCard 
                         number="02" 
                         title="Físico" 
                         desc="Periodização de treinos e nutrição calculada." 
+                        imgSrc="/estatua.png"
                     />
                     <FeatureCard 
                         number="03" 
                         title="Ambiente" 
                         desc="Conexão com pessoas que elevam sua frequência." 
+                        imgSrc="/woman.png"
                     />
                   </div>
                 </div>

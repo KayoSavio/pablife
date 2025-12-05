@@ -185,7 +185,9 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 mix-blend-difference pointer-events-none">
         <div className="max-w-[1800px] mx-auto flex justify-between items-center pointer-events-auto">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-3 h-3 bg-pink-500 animate-pulse"></div>
+            <div className="w-8 h-8 animate-pulse">
+              <img src="/logo.png" alt="" />
+            </div>
             <span className="font-black text-lg tracking-[0.2em]">PABLIFE</span>
           </div>
           

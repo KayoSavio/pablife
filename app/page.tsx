@@ -107,7 +107,7 @@ function Model() {
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen bg-[#2e003e]">
+    <div className="w-screen h-screen bg-[#2e003e] relative">
       <Canvas shadows camera={{ position: [5, -4, 8], fov: 30 }}>
         {/* Luzes: Reduzi um pouco a luz rosa para não tingir o óculos */}
         <ambientLight intensity={0.4} color={colors.pink} />
@@ -137,6 +137,25 @@ export default function Home() {
           <meshBasicMaterial color={colors.pink} />
         </mesh>
       </Canvas>
+      
+      {/* Rodapé fixo com informações de contato */}
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <div style={styles.contactInfo}>
+            <a href="mailto:Suporte@pablife.com.br" style={styles.footerLink}>
+              📧 Suporte@pablife.com.br
+            </a>
+            <a href="https://instagram.com/pablife" target="_blank" rel="noopener noreferrer" style={styles.footerLink}>
+              📷 @pablife
+            </a>
+          </div>
+          <div style={styles.footerLinks}>
+            <a href="/privacidade" style={styles.footerLinkSmall}>Política de Privacidade</a>
+            <span style={styles.separator}>|</span>
+            <a href="/termos" style={styles.footerLinkSmall}>Termos de Uso</a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
@@ -145,5 +164,58 @@ const styles: any = {
   section: { height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' },
   title: { fontSize: '5rem', fontWeight: '900', lineHeight: '0.9', color: 'white', margin: 0, fontFamily: "'Inter', sans-serif", textTransform: 'uppercase' },
   text: { color: 'white', fontSize: '1.5rem', fontFamily: 'sans-serif', marginTop: '10px' },
-  button: { marginTop: '20px', padding: '15px 40px', borderRadius: '50px', border: 'none', background: '#FF3395', color: 'white', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0px 10px 20px rgba(0,0,0,0.3)' }
+  button: { marginTop: '20px', padding: '15px 40px', borderRadius: '50px', border: 'none', background: '#FF3395', color: 'white', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0px 10px 20px rgba(0,0,0,0.3)' },
+  footer: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'rgba(46, 0, 62, 0.95)',
+    backdropFilter: 'blur(10px)',
+    padding: '20px',
+    borderTop: `2px solid ${colors.pink}`,
+    zIndex: 1000
+  },
+  footerContent: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    alignItems: 'center'
+  },
+  contactInfo: {
+    display: 'flex',
+    gap: '30px',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  footerLink: {
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '1rem',
+    fontFamily: 'sans-serif',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px'
+  },
+  footerLinks: {
+    display: 'flex',
+    gap: '15px',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  footerLinkSmall: {
+    color: colors.blue,
+    textDecoration: 'none',
+    fontSize: '0.9rem',
+    fontFamily: 'sans-serif',
+    transition: 'all 0.3s ease'
+  },
+  separator: {
+    color: 'rgba(255, 255, 255, 0.3)',
+    fontSize: '0.9rem'
+  }
 }

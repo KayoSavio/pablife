@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Estilos para links do rodapé */
+a[href^="mailto:"],
+a[href^="https://instagram.com"],
+a[href^="/privacidade"],
+a[href^="/termos"] {
+  transition: all 0.3s ease;
+}
+
+a[href^="mailto:"]:hover,
+a[href^="https://instagram.com"]:hover {
+  color: #00FFFF !important;
+  transform: translateY(-2px);
+}
+
+a[href^="/privacidade"]:hover,
+a[href^="/termos"]:hover {
+  color: #FF3395 !important;
+  text-decoration: underline;
+}

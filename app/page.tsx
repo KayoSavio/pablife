@@ -209,25 +209,35 @@ export default function Home() {
         <ScrollControls pages={5} damping={0.3}>
           <Model />
           <Scroll html style={{ width: '100%' }}>
-            {/* HERO SECTION */}
-            <section style={{ ...styles.section, alignItems: 'flex-start', paddingLeft: '10vw' }}>
-              <h1 style={styles.title}>MENTE<br /><span style={{ color: colors.blue }}>TRAVADA?</span></h1>
-              <p style={styles.text}>500 abas abertas.</p>
+            {/* HERO SECTION - Simétrica e Centralizada */}
+            <section style={styles.heroSection}>
+              <div style={styles.heroContent}>
+                <div style={styles.heroText}>
+                  <h1 style={styles.heroTitle}>
+                    MENTE<br />
+                    <span style={{ color: colors.blue }}>TRAVADA?</span>
+                  </h1>
+                  <p style={styles.heroSubtext}>500 abas abertas.</p>
+                  <p style={styles.heroDescription}>
+                    Organize o caos da sua mente.<br />
+                    <span style={{ color: colors.blue }}>Saúde. Metas. Rotina.</span>
+                  </p>
+                </div>
+                <div style={styles.heroVisual}>
+                  {/* Espaço para a estátua 3D */}
+                </div>
+              </div>
             </section>
             
-            {/* PROBLEMA SECTION */}
-            <section style={{ ...styles.section, alignItems: 'flex-end', paddingRight: '10vw', textAlign: 'right' }}>
-              <h1 style={{ ...styles.title, fontSize: '4rem' }}>ORGANIZE<br />O CAOS.</h1>
-              <p style={{ ...styles.text, color: colors.blue }}>Saúde. Metas. Rotina.</p>
-            </section>
-            
-            {/* BRAND SECTION */}
-            <section style={{ ...styles.section, justifyContent: 'center', alignItems: 'center' }}>
-              <h1 style={{ ...styles.title, fontSize: '6rem', background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>PABLIFE</h1>
-              <p style={{ ...styles.subtitle, marginTop: '20px', maxWidth: '600px', textAlign: 'center' }}>
+            {/* BRAND SECTION - Centralizada */}
+            <section style={styles.brandSection}>
+              <h1 style={styles.brandTitle}>
+                PABLIFE
+              </h1>
+              <p style={styles.brandSubtitle}>
                 O aplicativo que transforma o caos da sua mente em uma vida organizada e produtiva
               </p>
-              <button style={styles.button}>BAIXAR APP</button>
+              <button style={styles.ctaButton}>BAIXAR APP</button>
             </section>
             
             {/* FEATURES SECTION */}
@@ -305,6 +315,113 @@ const styles: any = {
   subtitle: { color: 'white', fontSize: '1.5rem', fontFamily: 'sans-serif', lineHeight: '1.6' },
   text: { color: 'white', fontSize: '1.5rem', fontFamily: 'sans-serif', marginTop: '10px' },
   button: { marginTop: '20px', padding: '15px 40px', borderRadius: '50px', border: 'none', background: '#FF3395', color: 'white', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0px 10px 20px rgba(0,0,0,0.3)', transition: 'all 0.3s ease' },
+  heroSection: {
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '100px 5vw 80px',
+    position: 'relative'
+  },
+  heroContent: {
+    maxWidth: '1400px',
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '80px',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  heroText: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    zIndex: 10
+  },
+  heroTitle: {
+    fontSize: '6rem',
+    fontWeight: '900',
+    lineHeight: '0.95',
+    color: 'white',
+    margin: 0,
+    marginBottom: '20px',
+    fontFamily: "'Inter', sans-serif",
+    textTransform: 'uppercase',
+    letterSpacing: '-2px'
+  },
+  heroSubtext: {
+    color: 'white',
+    fontSize: '1.8rem',
+    fontFamily: 'sans-serif',
+    marginBottom: '30px',
+    opacity: 0.9
+  },
+  heroDescription: {
+    color: 'white',
+    fontSize: '1.5rem',
+    fontFamily: 'sans-serif',
+    lineHeight: '1.6',
+    marginTop: '20px'
+  },
+  heroVisual: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    height: '100%',
+    minHeight: '500px',
+    width: '100%',
+    pointerEvents: 'none'
+  },
+  brandSection: {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '80px 5vw',
+    textAlign: 'center',
+    position: 'relative'
+  },
+  brandTitle: {
+    fontSize: '8rem',
+    fontWeight: '900',
+    lineHeight: '0.9',
+    margin: 0,
+    marginBottom: '30px',
+    fontFamily: "'Inter', sans-serif",
+    textTransform: 'uppercase',
+    background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`,
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    letterSpacing: '-3px',
+    textShadow: '0 0 60px rgba(255, 51, 149, 0.5)'
+  },
+  brandSubtitle: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: '1.5rem',
+    fontFamily: 'sans-serif',
+    lineHeight: '1.8',
+    maxWidth: '700px',
+    marginBottom: '40px',
+    fontWeight: '300',
+    letterSpacing: '0.5px'
+  },
+  ctaButton: {
+    padding: '20px 60px',
+    borderRadius: '50px',
+    border: 'none',
+    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
+    color: 'white',
+    fontSize: '1.3rem',
+    fontWeight: '700',
+    cursor: 'pointer',
+    boxShadow: '0px 15px 40px rgba(255, 51, 149, 0.4)',
+    transition: 'all 0.3s ease',
+    textTransform: 'uppercase',
+    letterSpacing: '1px'
+  },
   sectionTitle: { fontSize: '3rem', fontWeight: '900', color: 'white', margin: 0, fontFamily: "'Inter', sans-serif", textTransform: 'uppercase', textAlign: 'center' },
   featuresSection: {
     minHeight: '100vh',

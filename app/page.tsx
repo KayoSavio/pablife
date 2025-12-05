@@ -2,7 +2,7 @@
 
 import React, { useRef, useMemo, useState, Suspense, useLayoutEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useGLTF, ScrollControls, Scroll, useScroll, Environment, Loader, Center, Resize } from '@react-three/drei'
+import { useGLTF, ScrollControls, Scroll, useScroll, Environment, Loader, Center, Resize, useProgress } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette, Noise } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import gsap from 'gsap'
@@ -16,6 +16,37 @@ const colors = {
   pinkNeon: '#ff0055',
   cyanNeon: '#00ffff',
   purpleDeep: '#05000a',
+}
+
+function CustomLoader() {
+  const { active, progress } = useProgress()
+  
+  // Se não estiver carregando (active = false), não mostra nada
+  if (!active) return null
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-[#05000a] flex flex-col items-center justify-center">
+      {/* SEU LOGO AQUI */}
+      <img 
+        src="/logo.png" 
+        alt="Pablife Logo" 
+        className="w-32 md:w-48 mb-8 animate-pulse object-contain" 
+      />
+      
+      {/* BARRA DE PROGRESSO */}
+      <div className="w-64 h-[2px] bg-gray-800 rounded-full overflow-hidden relative">
+        <div 
+          className="h-full bg-gradient-to-r from-pink-500 to-cyan-500 transition-all duration-200 ease-out" 
+          style={{ width: `${progress}%` }} 
+        />
+      </div>
+      
+      {/* PORCENTAGEM */}
+      <span className="mt-4 font-mono text-[10px] text-pink-500 tracking-[0.3em] animate-pulse">
+        SYSTEM_LOADING... {progress.toFixed(0)}%
+      </span>
+    </div>
+  )
 }
 
 function Model() {
@@ -353,7 +384,7 @@ export default function Home() {
           </ScrollControls>
         </Suspense>
       </Canvas>
-      <Loader />
+      <CustomLoader />
     </div>
   )
 }

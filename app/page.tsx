@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useLayoutEffect, useMemo } from 'react'
+import React, { useRef, useLayoutEffect, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, ScrollControls, Scroll, useScroll, Outlines, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
@@ -106,29 +106,168 @@ function Model() {
 }
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault()
+    setIsMenuOpen(false)
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <div className="w-screen h-screen bg-[#2e003e] relative">
+      {/* Header fixo melhorado */}
+      <header style={{ ...styles.header, ...(scrolled ? styles.headerScrolled : {}) }}>
+        <div style={styles.headerContent}>
+          <div 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            style={styles.logoLink}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div style={styles.logo}>
+              <span style={{ background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontSize: '1.8rem', fontWeight: '900', fontFamily: "'Inter', sans-serif", letterSpacing: '2px' }}>PABLIFE</span>
+            </div>
+          </div>
+          
+          {/* Menu Desktop */}
+          <nav style={styles.nav} className="desktop-nav">
+            <a href="#features" onClick={(e) => handleNavClick(e, 'features')} style={styles.navLink}>
+              <span>Funcionalidades</span>
+            </a>
+            <a href="mailto:Suporte@pablife.com.br" style={styles.navLink}>
+              <span>Contato</span>
+            </a>
+            <a href="/privacidade" style={styles.navLink}>
+              <span>Privacidade</span>
+            </a>
+            <button style={styles.navButton} onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}>
+              <span>Baixar App</span>
+            </button>
+          </nav>
+
+          {/* Menu Hambúrguer Mobile */}
+          <button 
+            style={styles.menuToggle}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span style={{ ...styles.menuLine, transform: isMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none' }}></span>
+            <span style={{ ...styles.menuLine, opacity: isMenuOpen ? 0 : 1 }}></span>
+            <span style={{ ...styles.menuLine, transform: isMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none' }}></span>
+          </button>
+        </div>
+
+        {/* Overlay para menu mobile */}
+        {isMenuOpen && (
+          <div 
+            style={styles.overlay}
+            onClick={() => setIsMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Menu Mobile */}
+        <nav style={{ ...styles.mobileNav, ...(isMenuOpen ? styles.mobileNavOpen : {}) }}>
+          <a href="#features" onClick={(e) => handleNavClick(e, 'features')} style={styles.mobileNavLink}>
+            <span style={styles.mobileNavIcon}>✨</span>
+            Funcionalidades
+          </a>
+          <a href="mailto:Suporte@pablife.com.br" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>
+            <span style={styles.mobileNavIcon}>📧</span>
+            Contato
+          </a>
+          <a href="/privacidade" onClick={() => setIsMenuOpen(false)} style={styles.mobileNavLink}>
+            <span style={styles.mobileNavIcon}>🔒</span>
+            Privacidade
+          </a>
+          <button style={styles.mobileNavButton} onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }) }}>
+            <span>📱</span> Baixar App
+          </button>
+        </nav>
+      </header>
+      
       <Canvas shadows camera={{ position: [5, -4, 8], fov: 30 }}>
         {/* Luzes: Reduzi um pouco a luz rosa para não tingir o óculos */}
         <ambientLight intensity={0.4} color={colors.pink} />
         <directionalLight position={[3, 6, 4]} intensity={1.5} color="white" />
         <spotLight position={[-5, 0, 2]} intensity={5} color={colors.blue} angle={0.5} />
 
-        <ScrollControls pages={3} damping={0.3}>
+        <ScrollControls pages={5} damping={0.3}>
           <Model />
           <Scroll html style={{ width: '100%' }}>
-            {/* SEÇÕES DE TEXTO (IGUAIS AO ANTERIOR) */}
+            {/* HERO SECTION */}
             <section style={{ ...styles.section, alignItems: 'flex-start', paddingLeft: '10vw' }}>
               <h1 style={styles.title}>MENTE<br /><span style={{ color: colors.blue }}>TRAVADA?</span></h1>
               <p style={styles.text}>500 abas abertas.</p>
             </section>
+            
+            {/* PROBLEMA SECTION */}
             <section style={{ ...styles.section, alignItems: 'flex-end', paddingRight: '10vw', textAlign: 'right' }}>
               <h1 style={{ ...styles.title, fontSize: '4rem' }}>ORGANIZE<br />O CAOS.</h1>
               <p style={{ ...styles.text, color: colors.blue }}>Saúde. Metas. Rotina.</p>
             </section>
+            
+            {/* BRAND SECTION */}
             <section style={{ ...styles.section, justifyContent: 'center', alignItems: 'center' }}>
               <h1 style={{ ...styles.title, fontSize: '6rem', background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>PABLIFE</h1>
+              <p style={{ ...styles.subtitle, marginTop: '20px', maxWidth: '600px', textAlign: 'center' }}>
+                O aplicativo que transforma o caos da sua mente em uma vida organizada e produtiva
+              </p>
               <button style={styles.button}>BAIXAR APP</button>
+            </section>
+            
+            {/* FEATURES SECTION */}
+            <section id="features" style={styles.featuresSection}>
+              <div style={styles.featuresContainer}>
+                <h2 style={styles.featuresTitle}>FUNCIONALIDADES</h2>
+                <p style={styles.featuresSubtitle}>Tudo que você precisa para transformar sua vida em um só lugar</p>
+                <div style={styles.featuresGrid}>
+                  <div style={styles.featureCard}>
+                    <div style={styles.featureIconWrapper}>
+                      <div style={styles.featureIcon}>💪</div>
+                    </div>
+                    <h3 style={styles.featureTitle}>Saúde</h3>
+                    <p style={styles.featureText}>Acompanhe sua rotina de exercícios, alimentação e bem-estar em um só lugar</p>
+                  </div>
+                  <div style={styles.featureCard}>
+                    <div style={styles.featureIconWrapper}>
+                      <div style={styles.featureIcon}>🎯</div>
+                    </div>
+                    <h3 style={styles.featureTitle}>Metas</h3>
+                    <p style={styles.featureText}>Defina e alcance seus objetivos com ferramentas inteligentes de planejamento</p>
+                  </div>
+                  <div style={styles.featureCard}>
+                    <div style={styles.featureIconWrapper}>
+                      <div style={styles.featureIcon}>📅</div>
+                    </div>
+                    <h3 style={styles.featureTitle}>Rotina</h3>
+                    <p style={styles.featureText}>Organize seu dia a dia com lembretes inteligentes e planejamento automático</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            {/* CTA SECTION */}
+            <section style={{ ...styles.section, justifyContent: 'center', alignItems: 'center', background: 'linear-gradient(180deg, rgba(46,0,62,0.8) 0%, rgba(46,0,62,1) 100%)' }}>
+              <h2 style={{ ...styles.sectionTitle, fontSize: '3.5rem', marginBottom: '30px' }}>PRONTO PARA<br />ORGANIZAR SUA VIDA?</h2>
+              <p style={{ ...styles.text, fontSize: '1.3rem', marginBottom: '40px', textAlign: 'center', maxWidth: '700px' }}>
+                Junte-se a milhares de pessoas que já transformaram suas vidas com o PABLIFE
+              </p>
+              <button style={{ ...styles.button, fontSize: '1.3rem', padding: '20px 50px' }}>COMEÇAR AGORA</button>
             </section>
           </Scroll>
         </ScrollControls>
@@ -161,10 +300,267 @@ export default function Home() {
 }
 
 const styles: any = {
-  section: { height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' },
+  section: { minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', paddingTop: '80px' },
   title: { fontSize: '5rem', fontWeight: '900', lineHeight: '0.9', color: 'white', margin: 0, fontFamily: "'Inter', sans-serif", textTransform: 'uppercase' },
+  subtitle: { color: 'white', fontSize: '1.5rem', fontFamily: 'sans-serif', lineHeight: '1.6' },
   text: { color: 'white', fontSize: '1.5rem', fontFamily: 'sans-serif', marginTop: '10px' },
-  button: { marginTop: '20px', padding: '15px 40px', borderRadius: '50px', border: 'none', background: '#FF3395', color: 'white', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0px 10px 20px rgba(0,0,0,0.3)' },
+  button: { marginTop: '20px', padding: '15px 40px', borderRadius: '50px', border: 'none', background: '#FF3395', color: 'white', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0px 10px 20px rgba(0,0,0,0.3)', transition: 'all 0.3s ease' },
+  sectionTitle: { fontSize: '3rem', fontWeight: '900', color: 'white', margin: 0, fontFamily: "'Inter', sans-serif", textTransform: 'uppercase', textAlign: 'center' },
+  featuresSection: {
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '120px 5vw 80px',
+    position: 'relative',
+    background: 'linear-gradient(180deg, rgba(46, 0, 62, 0.3) 0%, rgba(46, 0, 62, 0.95) 50%, rgba(46, 0, 62, 0.3) 100%)'
+  },
+  featuresContainer: {
+    maxWidth: '1400px',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  featuresTitle: {
+    fontSize: '4rem',
+    fontWeight: '900',
+    color: 'white',
+    margin: 0,
+    marginBottom: '20px',
+    fontFamily: "'Inter', sans-serif",
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`,
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    textShadow: '0 0 30px rgba(255, 51, 149, 0.5)'
+  },
+  featuresSubtitle: {
+    color: colors.blue,
+    fontSize: '1.3rem',
+    fontFamily: 'sans-serif',
+    marginBottom: '60px',
+    textAlign: 'center',
+    fontWeight: '300',
+    letterSpacing: '1px'
+  },
+  featuresGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gap: '40px',
+    width: '100%'
+  },
+  featureCard: {
+    background: 'rgba(255, 255, 255, 0.12)',
+    padding: '50px 40px',
+    borderRadius: '25px',
+    backdropFilter: 'blur(20px)',
+    border: `2px solid ${colors.pink}`,
+    textAlign: 'center',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: `0 10px 40px rgba(255, 51, 149, 0.2), inset 0 0 60px rgba(0, 255, 255, 0.05)`
+  },
+  featureIconWrapper: {
+    width: '100px',
+    height: '100px',
+    margin: '0 auto 30px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
+    borderRadius: '50%',
+    boxShadow: `0 10px 30px rgba(255, 51, 149, 0.4)`,
+    transition: 'all 0.3s ease'
+  },
+  featureIcon: {
+    fontSize: '3.5rem',
+    filter: 'drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3))'
+  },
+  featureTitle: {
+    fontSize: '2rem',
+    fontWeight: '800',
+    color: colors.blue,
+    marginBottom: '20px',
+    fontFamily: "'Inter', sans-serif",
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
+    textShadow: `0 0 20px rgba(0, 255, 255, 0.5)`
+  },
+  featureText: {
+    color: 'rgba(255, 255, 255, 0.95)',
+    fontSize: '1.1rem',
+    lineHeight: '1.8',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: '400'
+  },
+  header: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    background: 'rgba(46, 0, 62, 0.85)',
+    backdropFilter: 'blur(20px)',
+    padding: '15px 20px',
+    borderBottom: `2px solid transparent`,
+    zIndex: 1001,
+    transition: 'all 0.3s ease',
+    boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)'
+  },
+  headerScrolled: {
+    background: 'rgba(46, 0, 62, 0.98)',
+    borderBottom: `2px solid ${colors.pink}`,
+    padding: '12px 20px',
+    boxShadow: '0 4px 30px rgba(255, 51, 149, 0.2)'
+  },
+  headerContent: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    position: 'relative'
+  },
+  logoLink: {
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    transition: 'transform 0.3s ease',
+    cursor: 'pointer',
+    userSelect: 'none'
+  },
+  logo: {
+    fontSize: '1.8rem',
+    fontWeight: '900',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px'
+  },
+  nav: {
+    display: 'flex',
+    gap: '8px',
+    alignItems: 'center'
+  },
+  navLink: {
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '0.95rem',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: '500',
+    padding: '10px 20px',
+    borderRadius: '25px',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden'
+  },
+  navButton: {
+    padding: '12px 28px',
+    borderRadius: '30px',
+    border: 'none',
+    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
+    color: 'white',
+    fontSize: '0.95rem',
+    fontWeight: '700',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    boxShadow: `0 4px 15px rgba(255, 51, 149, 0.4)`,
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px'
+  },
+  menuToggle: {
+    display: 'none',
+    flexDirection: 'column',
+    gap: '5px',
+    background: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    padding: '8px',
+    zIndex: 1002
+  },
+  menuLine: {
+    width: '28px',
+    height: '3px',
+    background: colors.pink,
+    borderRadius: '3px',
+    transition: 'all 0.3s ease',
+    display: 'block'
+  },
+  mobileNav: {
+    position: 'fixed',
+    top: '70px',
+    left: 0,
+    right: 0,
+    background: 'rgba(46, 0, 62, 0.98)',
+    backdropFilter: 'blur(20px)',
+    padding: '30px 20px',
+    borderBottom: `2px solid ${colors.pink}`,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    transform: 'translateY(-100%)',
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    zIndex: 1000,
+    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
+    maxHeight: 'calc(100vh - 70px)',
+    overflowY: 'auto'
+  },
+  mobileNavOpen: {
+    transform: 'translateY(0)',
+    opacity: 1,
+    visibility: 'visible'
+  },
+  mobileNavLink: {
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '1.1rem',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: '500',
+    padding: '15px 20px',
+    borderRadius: '15px',
+    transition: 'all 0.3s ease',
+    border: `1px solid transparent`,
+    textAlign: 'center'
+  },
+  mobileNavButton: {
+    padding: '15px 30px',
+    borderRadius: '30px',
+    border: 'none',
+    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
+    color: 'white',
+    fontSize: '1.1rem',
+    fontWeight: '700',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    boxShadow: `0 4px 15px rgba(255, 51, 149, 0.4)`,
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
+    marginTop: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px'
+  },
+  mobileNavIcon: {
+    fontSize: '1.3rem',
+    marginRight: '10px'
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'rgba(0, 0, 0, 0.7)',
+    backdropFilter: 'blur(5px)',
+    zIndex: 999,
+    animation: 'fadeIn 0.3s ease'
+  },
   footer: {
     position: 'fixed',
     bottom: 0,

@@ -36,9 +36,6 @@ export const metadata: Metadata = {
     title: "PABLIFE - Organize o Caos",
     description: "Organize sua vida. Saúde. Metas. Rotina.",
   },
-  contact: {
-    email: "Suporte@pablife.com.br",
-  },
 };
 
 export default function RootLayout({

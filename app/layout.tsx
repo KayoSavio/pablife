@@ -13,28 +13,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PABLIFE - Organize o Caos",
-  description: "Organize sua vida. Saúde. Metas. Rotina. PABLIFE ajuda você a organizar o caos da sua mente.",
-  keywords: "organização, produtividade, saúde, metas, rotina, app, pablife",
+  title: "PABLIFE - Organize o Caos | App de Produtividade e Organização",
+  description: "Organize sua vida com o PABLIFE. Aplicativo completo para saúde, metas, rotina, mentorias e agendamentos. Baixe agora na App Store e Google Play.",
+  keywords: "organização, produtividade, saúde, metas, rotina, app, pablife, mentorias, agendamento, profissionais, suporte, aplicativo, app store, google play",
   authors: [{ name: "PABLIFE" }],
   creator: "PABLIFE",
   publisher: "PABLIFE",
+  applicationName: "PABLIFE",
+  category: "Productivity",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   metadataBase: new URL("https://pablife.com.br"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "PABLIFE - Organize o Caos",
-    description: "Organize sua vida. Saúde. Metas. Rotina.",
+    title: "PABLIFE - Organize o Caos | App de Produtividade",
+    description: "Organize sua vida. Saúde. Metas. Rotina. Mentorias e suporte profissional. Baixe o app PABLIFE agora.",
     type: "website",
     locale: "pt_BR",
+    siteName: "PABLIFE",
+    url: "https://pablife.com.br",
   },
   twitter: {
     card: "summary_large_image",
     title: "PABLIFE - Organize o Caos",
-    description: "Organize sua vida. Saúde. Metas. Rotina.",
+    description: "Organize sua vida. Saúde. Metas. Rotina. Mentorias e suporte profissional.",
+    creator: "@pablife",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  verification: {
+    // Adicione aqui os códigos de verificação quando disponíveis
+    // google: "seu-codigo-google",
+    // yandex: "seu-codigo-yandex",
   },
 };
 

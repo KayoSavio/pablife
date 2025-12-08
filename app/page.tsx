@@ -150,7 +150,7 @@ function Model() {
   return (
     <group ref={groupRef}>
       <Center>
-        <Resize height={5.5}>
+        <Resize>
           <primitive object={combinedScene} />
         </Resize>
       </Center>

@@ -410,24 +410,6 @@ const styles: any = {
     lineHeight: '1.6',
     fontFamily: 'sans-serif'
   },
-  contactBox: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '30px',
-    borderRadius: '20px',
-    border: `1px solid ${colors.blue}`,
-    marginTop: '20px'
-  },
-  contactItem: {
-    color: 'white',
-    fontSize: '1.1rem',
-    marginBottom: '15px',
-    fontFamily: 'sans-serif'
-  },
-  link: {
-    color: colors.blue,
-    textDecoration: 'none',
-    transition: 'all 0.3s ease'
-  },
   backButton: {
     marginTop: '50px',
     paddingTop: '30px',

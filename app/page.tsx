@@ -271,7 +271,7 @@ export default function Home() {
         <spotLight position={[0, 5, -5]} angle={0.5} penumbra={1} intensity={50} color="#ffffff" />
         <pointLight position={[0, -2, -2]} intensity={10} color="#4a00e0" />
 
-        <EffectComposer disableNormalPass>
+        <EffectComposer>
           <Bloom luminanceThreshold={1} mipmapBlur intensity={1.5} radius={0.6} />
           <Noise opacity={0.05} />
           <Vignette eskil={false} offset={0.1} darkness={0.7} />

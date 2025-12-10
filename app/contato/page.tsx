@@ -1,244 +1,65 @@
+'use client';
+import React from 'react';
+import { PageWrapper } from '../components/Layout/PageWrapper';
+import { Card } from '../components/UI/Card';
+import { Button } from '../components/UI/Button';
+import { Reveal } from "../components/UI/Reveal";
+
 export default function Contato() {
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <h1 style={styles.title}>CONTATO E SUPORTE</h1>
-        <p style={styles.subtitle}>
-          Estamos aqui para ajudar você. Entre em contato conosco através dos canais abaixo.
-        </p>
+    <PageWrapper>
+      <div className="max-w-5xl mx-auto">
 
-        <div style={styles.contactGrid}>
-          <div style={styles.contactCard}>
-            <div style={styles.iconWrapper}>
-              <div style={styles.icon}>📧</div>
-            </div>
-            <h3 style={styles.cardTitle}>Email</h3>
-            <p style={styles.cardText}>
-              Envie suas dúvidas, sugestões ou relatos de problemas
-            </p>
-            <a href="mailto:Suporte@pablife.com.br" style={styles.contactLink}>
-              Suporte@pablife.com.br
-            </a>
-          </div>
-
-          <div style={styles.contactCard}>
-            <div style={styles.iconWrapper}>
-              <div style={styles.icon}>📱</div>
-            </div>
-            <h3 style={styles.cardTitle}>Instagram</h3>
-            <p style={styles.cardText}>
-              Siga-nos e fique por dentro de novidades e dicas
-            </p>
-            <a href="https://instagram.com/pablife" target="_blank" rel="noopener noreferrer" style={styles.contactLink}>
-              @pablife
-            </a>
-          </div>
-
-          <div style={styles.contactCard}>
-            <div style={styles.iconWrapper}>
-              <div style={styles.icon}>⏰</div>
-            </div>
-            <h3 style={styles.cardTitle}>Horário de Atendimento</h3>
-            <p style={styles.cardText}>
-              Segunda a Sexta: 9h às 18h<br />
-              Sábado: 9h às 13h
-            </p>
-          </div>
+        <div className="text-center mb-16 space-y-6">
+          <Reveal width="100%">
+            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase">
+              FALE <span className="text-cyan-400">CONOSCO</span>
+            </h1>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">Estamos online. Como podemos ajudar?</p>
+          </Reveal>
         </div>
 
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Perguntas Frequentes</h2>
-          
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Como posso baixar o aplicativo?</h3>
-            <p style={styles.faqAnswer}>
-              O aplicativo PABLIFE está disponível na Apple App Store e Google Play Store. 
-              Procure por "PABLIFE" nas lojas oficiais.
-            </p>
-          </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card className="text-center bg-white/5 hover:border-pink-500">
+            <div className="w-12 h-12 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center text-2xl mb-4">📧</div>
+            <h3 className="font-bold text-white mb-2">Email Oficial</h3>
+            <p className="text-xs text-gray-400 mb-4">Dúvidas gerais e suporte técnico</p>
+            <a href="mailto:suporte@pablife.com.br" className="text-cyan-400 hover:text-cyan-300 font-mono text-sm">suporte@pablife.com.br</a>
+          </Card>
 
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>O aplicativo é gratuito?</h3>
-            <p style={styles.faqAnswer}>
-              Oferecemos uma versão gratuita com funcionalidades básicas. Para acesso completo 
-              a todas as funcionalidades, incluindo mentorias e suporte profissional, temos planos 
-              premium disponíveis.
-            </p>
-          </div>
+          <Card className="text-center bg-white/5 hover:border-pink-500">
+            <div className="w-12 h-12 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center text-2xl mb-4">📸</div>
+            <h3 className="font-bold text-white mb-2">Instagram</h3>
+            <p className="text-xs text-gray-400 mb-4">Novidades e direct</p>
+            <a href="https://instagram.com/pablife" target="_blank" className="text-cyan-400 hover:text-cyan-300 font-mono text-sm">@pablife</a>
+          </Card>
 
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Como funcionam as mentorias?</h3>
-            <p style={styles.faqAnswer}>
-              Você pode agendar sessões de mentoria com profissionais qualificados diretamente 
-              pelo aplicativo. Acesse a seção "Mentorias" para conhecer nossos profissionais e 
-              agendar sua sessão.
-            </p>
-          </div>
+          <Card className="text-center bg-white/5 hover:border-pink-500">
+            <div className="w-12 h-12 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center text-2xl mb-4">⏰</div>
+            <h3 className="font-bold text-white mb-2">Horário</h3>
+            <p className="text-xs text-gray-400">Seg-Sex: 09h às 18h</p>
+            <p className="text-xs text-gray-400">Sáb: 09h às 13h</p>
+          </Card>
+        </div>
 
-          <div style={styles.faqItem}>
-            <h3 style={styles.faqQuestion}>Meus dados estão seguros?</h3>
-            <p style={styles.faqAnswer}>
-              Sim, levamos a segurança dos seus dados muito a sério. Utilizamos criptografia de 
-              ponta e seguimos todas as normas de proteção de dados. Consulte nossa{' '}
-              <a href="/privacidade" style={styles.link}>Política de Privacidade</a> para mais detalhes.
-            </p>
+        <section className="bg-black/40 rounded-3xl p-8 border border-white/5">
+          <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-pink-500 pl-4">FAQ - Perguntas Frequentes</h2>
+          <div className="space-y-6">
+            {[
+              { q: "O app está disponível onde?", a: "Atualmente na App Store e Google Play. Busque por 'PABLIFE'." },
+              { q: "É gratuito?", a: "Sim, com funcionalidades premium opcionais para quem quer acelerar resultados." },
+              { q: "Como agendo mentorias?", a: "Diretamente pelo app na aba 'Mentores'. É instantâneo." },
+              { q: "Meus dados são seguros?", a: "Criptografia de ponta a ponta. Sua privacidade é inegociável." }
+            ].map((faq, i) => (
+              <div key={i} className="pb-6 border-b border-white/5 last:border-0 last:pb-0">
+                <h3 className="text-lg font-bold text-cyan-400 mb-2">{faq.q}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <div style={styles.backButton}>
-          <a href="/" style={styles.backLink}>← Voltar para o site</a>
-        </div>
       </div>
-    </div>
-  )
+    </PageWrapper>
+  );
 }
-
-const colors = {
-  pink: '#FF3395',
-  blue: '#00FFFF',
-  bg: '#2e003e'
-}
-
-const styles: any = {
-  container: {
-    minHeight: '100vh',
-    background: colors.bg,
-    padding: '100px 20px 40px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
-  },
-  content: {
-    maxWidth: '1000px',
-    width: '100%',
-    background: 'rgba(255, 255, 255, 0.05)',
-    padding: '50px',
-    borderRadius: '25px',
-    backdropFilter: 'blur(20px)',
-    border: `2px solid ${colors.pink}`
-  },
-  title: {
-    fontSize: '4rem',
-    fontWeight: '900',
-    color: colors.pink,
-    marginBottom: '20px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent'
-  },
-  subtitle: {
-    color: colors.blue,
-    fontSize: '1.3rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    fontFamily: 'sans-serif'
-  },
-  contactGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '30px',
-    marginBottom: '60px'
-  },
-  contactCard: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '40px',
-    borderRadius: '20px',
-    border: `2px solid ${colors.pink}`,
-    textAlign: 'center',
-    transition: 'all 0.3s ease'
-  },
-  iconWrapper: {
-    width: '80px',
-    height: '80px',
-    margin: '0 auto 20px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
-    borderRadius: '50%',
-    boxShadow: `0 10px 30px rgba(255, 51, 149, 0.4)`
-  },
-  icon: {
-    fontSize: '2.5rem'
-  },
-  cardTitle: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '15px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  cardText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1rem',
-    lineHeight: '1.6',
-    marginBottom: '20px',
-    fontFamily: 'sans-serif'
-  },
-  contactLink: {
-    color: colors.pink,
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    transition: 'all 0.3s ease',
-    display: 'inline-block'
-  },
-  section: {
-    marginTop: '50px',
-    paddingTop: '40px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-  },
-  sectionTitle: {
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '30px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase'
-  },
-  faqItem: {
-    background: 'rgba(255, 255, 255, 0.05)',
-    padding: '25px',
-    borderRadius: '15px',
-    marginBottom: '20px',
-    border: `1px solid ${colors.pink}`
-  },
-  faqQuestion: {
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '15px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  faqAnswer: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1rem',
-    lineHeight: '1.7',
-    fontFamily: 'sans-serif'
-  },
-  link: {
-    color: colors.blue,
-    textDecoration: 'none',
-    transition: 'all 0.3s ease'
-  },
-  backButton: {
-    marginTop: '50px',
-    paddingTop: '30px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-    textAlign: 'center'
-  },
-  backLink: {
-    color: colors.pink,
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-    transition: 'all 0.3s ease',
-    display: 'inline-block'
-  }
-}
-
-

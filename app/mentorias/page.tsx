@@ -1,304 +1,120 @@
+'use client';
+import React from 'react';
+import { PageWrapper } from '../components/Layout/PageWrapper';
+import { Card } from '../components/UI/Card';
+import { Button } from '../components/UI/Button';
+import Link from 'next/link';
+import { Reveal } from "../components/UI/Reveal";
+import { Squares } from "../components/Effects/Squares";
+
 export default function Mentorias() {
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <h1 style={styles.title}>MENTORIAS</h1>
-        <p style={styles.subtitle}>
-          Conecte-se com profissionais qualificados e acelere seu desenvolvimento pessoal e profissional
-        </p>
-
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>O Que São Nossas Mentorias?</h2>
-          <p style={styles.text}>
-            Nossas mentorias são sessões personalizadas com profissionais especializados em diversas áreas, 
-            incluindo desenvolvimento pessoal, produtividade, saúde mental, carreira e muito mais.
-          </p>
-          <p style={styles.text}>
-            Cada sessão é adaptada às suas necessidades específicas, oferecendo orientação prática e 
-            estratégias comprovadas para ajudá-lo a alcançar seus objetivos.
-          </p>
-        </section>
-
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Como Funciona</h2>
-          <div style={styles.stepsGrid}>
-            <div style={styles.stepCard}>
-              <div style={styles.stepNumber}>1</div>
-              <h3 style={styles.stepTitle}>Escolha o Profissional</h3>
-              <p style={styles.stepText}>
-                Navegue pelo nosso catálogo de profissionais e escolha aquele que melhor se alinha 
-                com suas necessidades e objetivos.
-              </p>
-            </div>
-            <div style={styles.stepCard}>
-              <div style={styles.stepNumber}>2</div>
-              <h3 style={styles.stepTitle}>Agende sua Sessão</h3>
-              <p style={styles.stepText}>
-                Selecione um horário que funcione para você. Nossos profissionais têm disponibilidade 
-                em diversos horários, incluindo finais de semana.
-              </p>
-            </div>
-            <div style={styles.stepCard}>
-              <div style={styles.stepNumber}>3</div>
-              <h3 style={styles.stepTitle}>Participe da Mentoria</h3>
-              <p style={styles.stepText}>
-                Conecte-se via videochamada ou presencialmente (quando disponível) e receba orientação 
-                personalizada do seu mentor.
-              </p>
-            </div>
-            <div style={styles.stepCard}>
-              <div style={styles.stepNumber}>4</div>
-              <h3 style={styles.stepTitle}>Acompanhe seu Progresso</h3>
-              <p style={styles.stepText}>
-                Use o aplicativo para acompanhar seu desenvolvimento, definir metas baseadas nas 
-                orientações recebidas e agendar sessões de acompanhamento.
-              </p>
-            </div>
+    <PageWrapper backgroundEffect={<Squares opacity={0.2} speed={0.5} />}>
+      <div className="max-w-6xl mx-auto">
+        <Reveal width="100%">
+          <div className="text-center mb-16 space-y-4">
+            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase">
+              Mentoria <span className="text-pink-500">Elite</span>
+            </h1>
+            <p className="text-xl text-cyan-200/80 max-w-2xl mx-auto font-light leading-relaxed">
+              Conecte-se com profissionais qualificados e acelere seu desenvolvimento pessoal e profissional.
+            </p>
           </div>
-        </section>
+        </Reveal>
 
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Áreas de Atuação</h2>
-          <div style={styles.areasGrid}>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>💼</div>
-              <h3 style={styles.areaTitle}>Desenvolvimento de Carreira</h3>
-            </div>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>🧠</div>
-              <h3 style={styles.areaTitle}>Saúde Mental</h3>
-            </div>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>⚡</div>
-              <h3 style={styles.areaTitle}>Produtividade</h3>
-            </div>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>💪</div>
-              <h3 style={styles.areaTitle}>Fitness e Saúde</h3>
-            </div>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>📚</div>
-              <h3 style={styles.areaTitle}>Educação e Aprendizado</h3>
-            </div>
-            <div style={styles.areaCard}>
-              <div style={styles.areaIcon}>🎯</div>
-              <h3 style={styles.areaTitle}>Definição de Metas</h3>
-            </div>
-          </div>
-        </section>
+        <div className="space-y-24">
 
-        <section style={styles.ctaSection}>
-          <h2 style={styles.ctaTitle}>Pronto para Começar?</h2>
-          <p style={styles.ctaText}>
-            Baixe o aplicativo PABLIFE e comece a agendar suas mentorias hoje mesmo!
-          </p>
-          <div style={styles.ctaButtons}>
-            <a href="/contato" style={styles.ctaButton}>Falar com Suporte</a>
-            <a href="/" style={styles.ctaButtonSecondary}>Voltar ao Início</a>
-          </div>
-        </section>
+          {/* SECTION 1: INTRO */}
+          <section className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6 uppercase tracking-wider">
+                <span className="text-pink-500">///</span> O Que São?
+              </h2>
+              <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+                <p>
+                  Nossas mentorias são sessões personalizadas com profissionais especializados em diversas áreas,
+                  incluindo desenvolvimento pessoal, produtividade, saúde mental, e carreira.
+                </p>
+                <p>
+                  Cada sessão é adaptada às suas necessidades específicas, oferecendo orientação prática e
+                  estratégias comprovadas para ajudá-lo a alcançar seus objetivos.
+                </p>
+              </div>
+            </div>
+            <Card className="bg-pink-900/10 border-pink-500/20">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-black/40 rounded-lg text-center">
+                  <div className="text-4xl mb-2">1:1</div>
+                  <div className="text-xs uppercase tracking-widest text-pink-400">Exclusivo</div>
+                </div>
+                <div className="p-4 bg-black/40 rounded-lg text-center">
+                  <div className="text-4xl mb-2">24h</div>
+                  <div className="text-xs uppercase tracking-widest text-cyan-400">Suporte</div>
+                </div>
+                <div className="col-span-2 p-4 bg-black/40 rounded-lg text-center">
+                  <div className="text-4xl mb-2">100%</div>
+                  <div className="text-xs uppercase tracking-widest text-white/50">Focado em você</div>
+                </div>
+              </div>
+            </Card>
+          </section>
 
-        <div style={styles.backButton}>
-          <a href="/" style={styles.backLink}>← Voltar para o site</a>
+          {/* SECTION 2: STEPS */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-12 uppercase tracking-wider text-center">
+              <span className="text-cyan-400">///</span> Como Funciona
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { step: '01', title: 'Escolha', desc: 'Navegue pelo catálogo e encontre o mentor ideal.' },
+                { step: '02', title: 'Agende', desc: 'Selecione o melhor horário para a sua rotina.' },
+                { step: '03', title: 'Participe', desc: 'Conecte-se via vídeo ou presencialmente.' },
+                { step: '04', title: 'Evolua', desc: 'Aplique o conhecimento e acompanhe seu progresso.' },
+              ].map((item) => (
+                <Card key={item.step} className="group hover:-translate-y-4 transition-transform duration-500">
+                  <div className="text-5xl font-black text-white/5 mb-4 group-hover:text-pink-500/20 transition-colors">{item.step}</div>
+                  <h3 className="text-xl font-bold text-cyan-400 mb-2 uppercase">{item.title}</h3>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* SECTION 3: AREAS */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-12 uppercase tracking-wider text-center">
+              Áreas de Atuação
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {[
+                { icon: '💼', label: 'Carreira' },
+                { icon: '🧠', label: 'Saúde Mental' },
+                { icon: '⚡', label: 'Produtividade' },
+                { icon: '💪', label: 'Fitness' },
+                { icon: '📚', label: 'Estudos' },
+                { icon: '🎯', label: 'Metas' },
+              ].map((area) => (
+                <Card key={area.label} className="text-center hover:bg-white/10 cursor-default">
+                  <div className="text-4xl mb-4 grayscale hover:grayscale-0 transition-all">{area.icon}</div>
+                  <h4 className="font-bold text-white uppercase tracking-wider text-sm">{area.label}</h4>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="text-center py-20 relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pink-900/10 to-transparent blur-3xl -z-10" />
+            <h2 className="text-4xl font-black text-white mb-6 uppercase italic">Pronto para começar?</h2>
+            <p className="text-gray-400 mb-8 max-w-lg mx-auto">Baixe o aplicativo Pablife e tenha acesso a mentores de elite na palma da sua mão.</p>
+            <div className="flex justify-center gap-6">
+              <Link href="/contato"><Button variant="primary" glow>Falar com Suporte</Button></Link>
+              <Link href="/"><Button variant="ghost">Voltar ao Início</Button></Link>
+            </div>
+          </section>
+
         </div>
       </div>
-    </div>
-  )
+    </PageWrapper>
+  );
 }
-
-const colors = {
-  pink: '#FF3395',
-  blue: '#00FFFF',
-  bg: '#2e003e'
-}
-
-const styles: any = {
-  container: {
-    minHeight: '100vh',
-    background: colors.bg,
-    padding: '100px 20px 40px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
-  },
-  content: {
-    maxWidth: '1200px',
-    width: '100%',
-    background: 'rgba(255, 255, 255, 0.05)',
-    padding: '50px',
-    borderRadius: '25px',
-    backdropFilter: 'blur(20px)',
-    border: `2px solid ${colors.pink}`
-  },
-  title: {
-    fontSize: '4rem',
-    fontWeight: '900',
-    color: colors.pink,
-    marginBottom: '20px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent'
-  },
-  subtitle: {
-    color: colors.blue,
-    fontSize: '1.3rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    fontFamily: 'sans-serif',
-    lineHeight: '1.6'
-  },
-  section: {
-    marginBottom: '60px'
-  },
-  sectionTitle: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '30px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase'
-  },
-  text: {
-    color: 'white',
-    fontSize: '1.1rem',
-    lineHeight: '1.8',
-    marginBottom: '20px',
-    fontFamily: 'sans-serif'
-  },
-  stepsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '30px',
-    marginTop: '40px'
-  },
-  stepCard: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '35px',
-    borderRadius: '20px',
-    border: `2px solid ${colors.pink}`,
-    textAlign: 'center',
-    position: 'relative'
-  },
-  stepNumber: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
-    color: 'white',
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0 auto 20px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  stepTitle: {
-    fontSize: '1.3rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '15px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  stepText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1rem',
-    lineHeight: '1.6',
-    fontFamily: 'sans-serif'
-  },
-  areasGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '25px',
-    marginTop: '30px'
-  },
-  areaCard: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '30px',
-    borderRadius: '15px',
-    border: `1px solid ${colors.blue}`,
-    textAlign: 'center',
-    transition: 'all 0.3s ease'
-  },
-  areaIcon: {
-    fontSize: '3rem',
-    marginBottom: '15px'
-  },
-  areaTitle: {
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    fontFamily: "'Inter', sans-serif"
-  },
-  ctaSection: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '50px',
-    borderRadius: '25px',
-    border: `2px solid ${colors.blue}`,
-    textAlign: 'center',
-    marginTop: '50px'
-  },
-  ctaTitle: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: colors.pink,
-    marginBottom: '20px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase'
-  },
-  ctaText: {
-    color: 'white',
-    fontSize: '1.2rem',
-    marginBottom: '30px',
-    fontFamily: 'sans-serif'
-  },
-  ctaButtons: {
-    display: 'flex',
-    gap: '20px',
-    justifyContent: 'center',
-    flexWrap: 'wrap'
-  },
-  ctaButton: {
-    padding: '15px 40px',
-    borderRadius: '30px',
-    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    transition: 'all 0.3s ease',
-    fontFamily: 'sans-serif'
-  },
-  ctaButtonSecondary: {
-    padding: '15px 40px',
-    borderRadius: '30px',
-    background: 'transparent',
-    color: colors.blue,
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    border: `2px solid ${colors.blue}`,
-    transition: 'all 0.3s ease',
-    fontFamily: 'sans-serif'
-  },
-  backButton: {
-    marginTop: '50px',
-    paddingTop: '30px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-    textAlign: 'center'
-  },
-  backLink: {
-    color: colors.pink,
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-    transition: 'all 0.3s ease',
-    display: 'inline-block'
-  }
-}
-
-

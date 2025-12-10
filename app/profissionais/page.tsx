@@ -1,341 +1,87 @@
+'use client';
+import React from 'react';
+import { PageWrapper } from '../components/Layout/PageWrapper';
+import { Card } from '../components/UI/Card';
+import { Button } from '../components/UI/Button';
+import Link from 'next/link';
+import { Reveal } from "../components/UI/Reveal";
+import { Squares } from "../components/Effects/Squares";
+
 export default function Profissionais() {
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <h1 style={styles.title}>PROFISSIONAIS DE SUPORTE</h1>
-        <p style={styles.subtitle}>
-          Nossa equipe de profissionais qualificados está pronta para ajudá-lo em sua jornada
-        </p>
-
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Quem São Nossos Profissionais?</h2>
-          <p style={styles.text}>
-            Nossos profissionais são especialistas certificados em diversas áreas, cuidadosamente 
-            selecionados para oferecer a melhor orientação e suporte aos nossos usuários.
-          </p>
-          <p style={styles.text}>
-            Todos os profissionais passam por um rigoroso processo de seleção e são avaliados 
-            continuamente para garantir a qualidade do serviço oferecido.
-          </p>
-        </section>
-
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Perfis de Profissionais</h2>
-          <div style={styles.professionalsGrid}>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>👨‍💼</div>
-              <h3 style={styles.professionalTitle}>Coaches de Carreira</h3>
-              <p style={styles.professionalText}>
-                Especialistas em desenvolvimento profissional, transição de carreira e planejamento 
-                estratégico para alcançar seus objetivos profissionais.
-              </p>
-            </div>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>🧠</div>
-              <h3 style={styles.professionalTitle}>Psicólogos e Terapeutas</h3>
-              <p style={styles.professionalText}>
-                Profissionais licenciados em saúde mental, oferecendo suporte emocional, gestão de 
-                ansiedade e desenvolvimento pessoal.
-              </p>
-            </div>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>💪</div>
-              <h3 style={styles.professionalTitle}>Personal Trainers</h3>
-              <p style={styles.professionalText}>
-                Especialistas em fitness e nutrição, ajudando você a alcançar seus objetivos de 
-                saúde e bem-estar físico.
-              </p>
-            </div>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>⚡</div>
-              <h3 style={styles.professionalTitle}>Especialistas em Produtividade</h3>
-              <p style={styles.professionalText}>
-                Consultores especializados em organização, gestão de tempo e otimização de processos 
-                para maximizar sua eficiência.
-              </p>
-            </div>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>📚</div>
-              <h3 style={styles.professionalTitle}>Mentores Educacionais</h3>
-              <p style={styles.professionalText}>
-                Educadores e mentores que ajudam no desenvolvimento de habilidades, aprendizado 
-                contínuo e crescimento intelectual.
-              </p>
-            </div>
-            <div style={styles.professionalCard}>
-              <div style={styles.professionalIcon}>🎯</div>
-              <h3 style={styles.professionalTitle}>Especialistas em Metas</h3>
-              <p style={styles.professionalText}>
-                Profissionais que auxiliam na definição, planejamento e execução de objetivos 
-                pessoais e profissionais de forma estruturada.
-              </p>
-            </div>
+    <PageWrapper backgroundEffect={<Squares color="#00ffff" opacity={0.15} speed={0.8} />}>
+      <div className="max-w-6xl mx-auto">
+        <Reveal width="100%">
+          <div className="text-center mb-16 space-y-4">
+            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase">
+              PRO <span className="text-cyan-400">TEAM</span>
+            </h1>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
+              A elite do suporte. Nossa equipe de profissionais qualificados está pronta para masterizar sua jornada.
+            </p>
           </div>
-        </section>
+        </Reveal>
 
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Como Funciona o Suporte Profissional</h2>
-          <div style={styles.processList}>
-            <div style={styles.processItem}>
-              <div style={styles.processNumber}>1</div>
-              <div style={styles.processContent}>
-                <h3 style={styles.processTitle}>Selecione o Profissional</h3>
-                <p style={styles.processText}>
-                  Navegue pelos perfis dos profissionais, leia suas especialidades, avaliações e 
-                  escolha aquele que melhor se adequa às suas necessidades.
-                </p>
-              </div>
-            </div>
-            <div style={styles.processItem}>
-              <div style={styles.processNumber}>2</div>
-              <div style={styles.processContent}>
-                <h3 style={styles.processTitle}>Agende uma Sessão</h3>
-                <p style={styles.processText}>
-                  Use o sistema de agendamento integrado para escolher data e horário que funcionem 
-                  para você. Receba lembretes automáticos antes da sessão.
-                </p>
-              </div>
-            </div>
-            <div style={styles.processItem}>
-              <div style={styles.processNumber}>3</div>
-              <div style={styles.processContent}>
-                <h3 style={styles.processTitle}>Participe da Sessão</h3>
-                <p style={styles.processText}>
-                  Conecte-se via videochamada ou presencialmente e receba orientação personalizada. 
-                  Todas as sessões são confidenciais e seguras.
-                </p>
-              </div>
-            </div>
-            <div style={styles.processItem}>
-              <div style={styles.processNumber}>4</div>
-              <div style={styles.processContent}>
-                <h3 style={styles.processTitle}>Acompanhe seu Progresso</h3>
-                <p style={styles.processText}>
-                  Use o aplicativo para acompanhar seu desenvolvimento, revisar notas das sessões 
-                  e agendar sessões de acompanhamento conforme necessário.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div className="space-y-24">
 
-        <section style={styles.ctaSection}>
-          <h2 style={styles.ctaTitle}>Comece Agora</h2>
-          <p style={styles.ctaText}>
-            Baixe o aplicativo PABLIFE e tenha acesso a todos os nossos profissionais de suporte
-          </p>
-          <div style={styles.ctaButtons}>
-            <a href="/agendamento" style={styles.ctaButton}>Ver Agendamentos</a>
-            <a href="/contato" style={styles.ctaButtonSecondary}>Falar com Suporte</a>
-          </div>
-        </section>
+          {/* SECTION 1: PROFILES GRID */}
+          <section>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { icon: '👨‍💼', title: 'Career Coach', desc: 'Estratégia pura para dominar o mercado corporativo ou empreender.' },
+                { icon: '🧠', title: 'Psicólogos', desc: 'Blindagem mental. Controle de ansiedade e foco absoluto.' },
+                { icon: '💪', title: 'Trainers', desc: 'Engenharia corporal. Treinos periodizados para resultados estéticos.' },
+                { icon: '⚡', title: 'Productivity', desc: 'Hackeie seu tempo. Otimização de rotina e sistemas de eficiência.' },
+                { icon: '📚', title: 'Mentores', desc: 'Aceleração de aprendizado. Absorva conhecimento 10x mais rápido.' },
+                { icon: '🎯', title: 'Strategists', desc: 'Definição e execução de metas de alta complexidade.' },
+              ].map((pro) => (
+                <Card key={pro.title} className="group hover:border-cyan-400/50">
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{pro.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-3 uppercase tracking-wider">{pro.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed font-mono">{pro.desc}</p>
+                </Card>
+              ))}
+            </div>
+          </section>
 
-        <div style={styles.backButton}>
-          <a href="/" style={styles.backLink}>← Voltar para o site</a>
+          {/* SECTION 2: PROCESS */}
+          <section className="relative">
+            <div className="absolute left-[19px] top-0 bottom-0 w-[2px] bg-white/10 hidden md:block" />
+
+            <div className="space-y-12">
+              {[
+                { step: '01', title: 'Selection', text: 'Analise o perfil técnico de cada especialista.' },
+                { step: '02', title: 'Booking', text: 'Agendamento direto pelo app, sem burocracia.' },
+                { step: '03', title: 'Execution', text: 'Sessão intensa de alinhamento e estratégia.' },
+                { step: '04', title: 'Follow-up', text: 'Acompanhamento de métricas e recalibragem.' },
+              ].map((item) => (
+                <div key={item.step} className="grid grid-cols-[auto_1fr] gap-8 items-start relative bg-black/20 p-6 rounded-xl border border-white/5 hover:border-pink-500/30 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-600 to-cyan-600 flex items-center justify-center font-bold text-white z-10 shadow-[0_0_20px_rgba(255,51,149,0.5)]">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-cyan-400 mb-2 uppercase italic">{item.title}</h3>
+                    <p className="text-white/70 max-w-xl">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SECTION 3: CTA */}
+          <section className="flex flex-col items-center justify-center py-20 bg-gradient-to-t from-pink-900/20 to-transparent rounded-3xl border border-white/5">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 text-center uppercase tracking-tighter">
+              Construa seu time.<br />
+              <span className="text-pink-500">Domine o jogo.</span>
+            </h2>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <Link href="/agendamento"><Button variant="outline">Ver Agendamentos</Button></Link>
+              <Link href="/contato"><Button variant="primary" glow>Falar com Suporte</Button></Link>
+            </div>
+          </section>
+
         </div>
       </div>
-    </div>
-  )
+    </PageWrapper>
+  );
 }
-
-const colors = {
-  pink: '#FF3395',
-  blue: '#00FFFF',
-  bg: '#2e003e'
-}
-
-const styles: any = {
-  container: {
-    minHeight: '100vh',
-    background: colors.bg,
-    padding: '100px 20px 40px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
-  },
-  content: {
-    maxWidth: '1200px',
-    width: '100%',
-    background: 'rgba(255, 255, 255, 0.05)',
-    padding: '50px',
-    borderRadius: '25px',
-    backdropFilter: 'blur(20px)',
-    border: `2px solid ${colors.pink}`
-  },
-  title: {
-    fontSize: '4rem',
-    fontWeight: '900',
-    color: colors.pink,
-    marginBottom: '20px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase',
-    textAlign: 'center',
-    background: `-webkit-linear-gradient(0deg, ${colors.pink}, ${colors.blue})`,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent'
-  },
-  subtitle: {
-    color: colors.blue,
-    fontSize: '1.3rem',
-    textAlign: 'center',
-    marginBottom: '50px',
-    fontFamily: 'sans-serif',
-    lineHeight: '1.6'
-  },
-  section: {
-    marginBottom: '60px'
-  },
-  sectionTitle: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '30px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase'
-  },
-  text: {
-    color: 'white',
-    fontSize: '1.1rem',
-    lineHeight: '1.8',
-    marginBottom: '20px',
-    fontFamily: 'sans-serif'
-  },
-  professionalsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '30px',
-    marginTop: '40px'
-  },
-  professionalCard: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '35px',
-    borderRadius: '20px',
-    border: `2px solid ${colors.pink}`,
-    textAlign: 'center',
-    transition: 'all 0.3s ease'
-  },
-  professionalIcon: {
-    fontSize: '4rem',
-    marginBottom: '20px'
-  },
-  professionalTitle: {
-    fontSize: '1.4rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '15px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  professionalText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1rem',
-    lineHeight: '1.6',
-    fontFamily: 'sans-serif'
-  },
-  processList: {
-    marginTop: '40px'
-  },
-  processItem: {
-    display: 'flex',
-    gap: '30px',
-    marginBottom: '40px',
-    alignItems: 'flex-start'
-  },
-  processNumber: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
-    color: 'white',
-    fontSize: '1.8rem',
-    fontWeight: 'bold',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-    fontFamily: "'Inter', sans-serif"
-  },
-  processContent: {
-    flex: 1
-  },
-  processTitle: {
-    fontSize: '1.4rem',
-    fontWeight: 'bold',
-    color: colors.blue,
-    marginBottom: '15px',
-    fontFamily: "'Inter', sans-serif"
-  },
-  processText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1.1rem',
-    lineHeight: '1.7',
-    fontFamily: 'sans-serif'
-  },
-  ctaSection: {
-    background: 'rgba(255, 255, 255, 0.08)',
-    padding: '50px',
-    borderRadius: '25px',
-    border: `2px solid ${colors.blue}`,
-    textAlign: 'center',
-    marginTop: '50px'
-  },
-  ctaTitle: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: colors.pink,
-    marginBottom: '20px',
-    fontFamily: "'Inter', sans-serif",
-    textTransform: 'uppercase'
-  },
-  ctaText: {
-    color: 'white',
-    fontSize: '1.2rem',
-    marginBottom: '30px',
-    fontFamily: 'sans-serif'
-  },
-  ctaButtons: {
-    display: 'flex',
-    gap: '20px',
-    justifyContent: 'center',
-    flexWrap: 'wrap'
-  },
-  ctaButton: {
-    padding: '15px 40px',
-    borderRadius: '30px',
-    background: `linear-gradient(135deg, ${colors.pink}, ${colors.blue})`,
-    color: 'white',
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    transition: 'all 0.3s ease',
-    fontFamily: 'sans-serif'
-  },
-  ctaButtonSecondary: {
-    padding: '15px 40px',
-    borderRadius: '30px',
-    background: 'transparent',
-    color: colors.blue,
-    textDecoration: 'none',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    border: `2px solid ${colors.blue}`,
-    transition: 'all 0.3s ease',
-    fontFamily: 'sans-serif'
-  },
-  backButton: {
-    marginTop: '50px',
-    paddingTop: '30px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-    textAlign: 'center'
-  },
-  backLink: {
-    color: colors.pink,
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif',
-    transition: 'all 0.3s ease',
-    display: 'inline-block'
-  }
-}
-
-

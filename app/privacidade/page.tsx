@@ -38,7 +38,7 @@ export default function Privacidade() {
           <section className="bg-white/5 p-6 rounded-lg border border-white/10">
             <h2 className="text-lg font-bold text-white mb-2">Dúvidas sobre seus dados?</h2>
             <p className="mb-4">Nosso encarregado de dados está à disposição.</p>
-            <a href="mailto:dpo@pablife.com.br" className="text-pink-500 hover:text-pink-400 font-mono">dpo@pablife.com.br</a>
+            <a href="mailto:Suporte@pablife.com.br" className="text-pink-500 hover:text-pink-400 font-mono">Suporte@pablife.com.br</a>
           </section>
         </div>
       </div>

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PABLIFE - Organize o Caos",
     description: "Organize sua vida. Saúde. Metas. Rotina. Mentorias e suporte profissional.",
-    creator: "@pablife",
+    creator: "@pablife_app",
   },
   robots: {
     index: true,

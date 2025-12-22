@@ -10,7 +10,7 @@ export default function Agendamento() {
         <section style={styles.section}>
           <h2 style={styles.sectionTitle}>Como Agendar</h2>
           <p style={styles.text}>
-            O sistema de agendamento do PABLIFE permite que você agende sessões com profissionais 
+            O sistema de agendamento do PABLIFE permite que você agende sessões com profissionais
             qualificados diretamente pelo aplicativo, de forma simples e intuitiva.
           </p>
         </section>
@@ -24,7 +24,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Acesse a Seção de Agendamento</h3>
               </div>
               <p style={styles.stepDescription}>
-                No aplicativo, navegue até a seção "Agendamentos" no menu principal. Lá você verá 
+                No aplicativo, navegue até a seção "Agendamentos" no menu principal. Lá você verá
                 todas as opções disponíveis.
               </p>
             </div>
@@ -35,7 +35,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Escolha o Tipo de Serviço</h3>
               </div>
               <p style={styles.stepDescription}>
-                Selecione entre mentorias, consultas, sessões de coaching ou outros serviços 
+                Selecione entre mentorias, consultas, sessões de coaching ou outros serviços
                 disponíveis, de acordo com suas necessidades.
               </p>
             </div>
@@ -46,7 +46,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Selecione o Profissional</h3>
               </div>
               <p style={styles.stepDescription}>
-                Escolha o profissional que deseja consultar. Você pode verificar especialidades, 
+                Escolha o profissional que deseja consultar. Você pode verificar especialidades,
                 avaliações e disponibilidade de cada um.
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Escolha Data e Horário</h3>
               </div>
               <p style={styles.stepDescription}>
-                Selecione uma data e horário disponível no calendário do profissional. Os horários 
+                Selecione uma data e horário disponível no calendário do profissional. Os horários
                 são exibidos em tempo real, mostrando apenas os slots disponíveis.
               </p>
             </div>
@@ -68,7 +68,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Confirme o Agendamento</h3>
               </div>
               <p style={styles.stepDescription}>
-                Revise os detalhes do agendamento e confirme. Você receberá uma confirmação por email 
+                Revise os detalhes do agendamento e confirme. Você receberá uma confirmação por email
                 e notificações no aplicativo.
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function Agendamento() {
                 <h3 style={styles.stepTitle}>Receba Lembretes</h3>
               </div>
               <p style={styles.stepDescription}>
-                O aplicativo enviará lembretes automáticos 24 horas e 1 hora antes do agendamento, 
+                O aplicativo enviará lembretes automáticos 24 horas e 1 hora antes do agendamento,
                 garantindo que você não perca sua sessão.
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function Agendamento() {
               <div style={styles.featureIcon}>📅</div>
               <h3 style={styles.featureTitle}>Calendário Integrado</h3>
               <p style={styles.featureText}>
-                Visualize todos os seus agendamentos em um calendário intuitivo, sincronizado com 
+                Visualize todos os seus agendamentos em um calendário intuitivo, sincronizado com
                 seu dispositivo.
               </p>
             </div>
@@ -101,7 +101,7 @@ export default function Agendamento() {
               <div style={styles.featureIcon}>🔄</div>
               <h3 style={styles.featureTitle}>Reagendamento Fácil</h3>
               <p style={styles.featureText}>
-                Precisa mudar o horário? Reagende facilmente através do aplicativo, respeitando 
+                Precisa mudar o horário? Reagende facilmente através do aplicativo, respeitando
                 as políticas de cancelamento.
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function Agendamento() {
             <div style={styles.infoItem}>
               <strong style={styles.infoLabel}>Suporte:</strong>
               <span style={styles.infoText}>
-                Em caso de dúvidas sobre agendamentos, entre em contato com nosso suporte através 
+                Em caso de dúvidas sobre agendamentos, entre em contato com nosso suporte através
                 do email <a href="mailto:Suporte@pablife.com.br" style={styles.link}>Suporte@pablife.com.br</a>.
               </span>
             </div>

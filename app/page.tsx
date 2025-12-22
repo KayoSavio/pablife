@@ -439,9 +439,11 @@ export default function Home() {
                     <Button variant="primary" size="lg" glow>
                       BAIXAR APP
                     </Button>
-                    <Button variant="outline" size="lg">
-                      INSTAGRAM
-                    </Button>
+                    <a href="https://www.instagram.com/pablife_app/" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="lg">
+                        INSTAGRAM
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </Section>
@@ -454,7 +456,7 @@ export default function Home() {
                     /// O Velho Você
                   </h3>
                   <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter text-white">
-                    ESCRAVO DA<br /><span className="text-pink-500 drop-shadow-lg">DOPAMINA</span>
+                    REFÉM DA<br /><span className="text-pink-500 drop-shadow-lg">DOPAMINA</span>
                   </h2>
                   <ul className="text-white leading-relaxed font-mono text-sm space-y-2">
                     <li className="flex items-center gap-2"><span className="text-red-500">×</span> Procrastinação Crônica</li>

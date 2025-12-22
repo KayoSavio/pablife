@@ -30,6 +30,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/logo.png", type: "image/png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/logo.png",
+  },
   openGraph: {
     title: "PABLIFE - Organize o Caos | App de Produtividade",
     description: "Organize sua vida. Saúde. Metas. Rotina. Mentorias e suporte profissional. Baixe o app PABLIFE agora.",
@@ -37,12 +48,21 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     siteName: "PABLIFE",
     url: "https://pablife.com.br",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "PABLIFE Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "PABLIFE - Organize o Caos",
     description: "Organize sua vida. Saúde. Metas. Rotina. Mentorias e suporte profissional.",
     creator: "@pablife_app",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,

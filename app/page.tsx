@@ -436,9 +436,11 @@ export default function Home() {
                   </p>
 
                   <div className="hero-line flex gap-6">
-                    <Button variant="primary" size="lg" glow>
-                      BAIXAR APP
-                    </Button>
+                    <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer">
+                      <Button variant="primary" size="lg" glow>
+                        BAIXAR APP
+                      </Button>
+                    </a>
                     <a href="https://www.instagram.com/pablife_app/" target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" size="lg">
                         INSTAGRAM
@@ -527,7 +529,9 @@ export default function Home() {
                   <h3 className="text-5xl md:text-8xl font-black mb-12 uppercase italic tracking-tighter leading-none">
                     "Não é sorte.<br />É <span className="text-cyan-400">método</span>."
                   </h3>
-                  <Button variant="secondary" size="lg" glow className="w-full md:w-auto min-w-[300px] text-lg py-6">BAIXAR PABLIFE</Button>
+                  <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer">
+                    <Button variant="secondary" size="lg" glow className="w-full md:w-auto min-w-[300px] text-lg py-6">BAIXAR PABLIFE</Button>
+                  </a>
                 </div>
               </Section>
 

@@ -276,6 +276,78 @@ const Section = ({ children, className = "" }: { children: React.ReactNode, clas
   </section>
 )
 
+const ScrollAnimations = () => {
+  const scroll = useScroll()
+
+  useGSAP(() => {
+    if (!scroll.el) return
+
+    // Hero Animation (moved here to ensure elements exist)
+    const tl = gsap.timeline({ delay: 0.5 })
+    tl.from(".hero-line", { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" })
+
+    // Duality Section - Left
+    gsap.from(".duality-left", {
+      scrollTrigger: {
+        trigger: ".duality-left",
+        scroller: scroll.el,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    })
+
+    // Duality Section - Right
+    gsap.from(".duality-right", {
+      scrollTrigger: {
+        trigger: ".duality-right",
+        scroller: scroll.el,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    })
+
+    // Features Cards
+    gsap.from(".feature-card", {
+      scrollTrigger: {
+        trigger: ".features-grid", // Use a parent wrapper for trigger reference if better, or the card itself
+        scroller: scroll.el,
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      },
+      y: 100,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2, // Stagger the cards
+      ease: "back.out(1.7)"
+    })
+
+    // CTA Box
+    gsap.from(".cta-box", {
+      scrollTrigger: {
+        trigger: ".cta-box",
+        scroller: scroll.el,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      scale: 0.8,
+      opacity: 0,
+      duration: 1,
+      ease: "elastic.out(1, 0.5)"
+    })
+
+  }, { dependencies: [scroll.el] })
+
+  return null
+}
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(true)
@@ -295,10 +367,7 @@ export default function Home() {
     }
   }
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.5 })
-    tl.from(".hero-line", { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease: "power3.out" })
-  })
+
 
   return (
     <div ref={containerRef} className="w-full h-screen bg-[#05000a] text-white overflow-hidden selection:bg-pink-500 selection:text-white font-sans">
@@ -363,7 +432,7 @@ export default function Home() {
                   </h1>
 
                   <p className="hero-line text-lg md:text-2xl text-gray-400 max-w-xl leading-relaxed mb-12 border-l-2 border-pink-500 pl-6 bg-gradient-to-r from-white/5 to-transparent p-4 rounded-r-xl backdrop-blur-sm">
-                    Biologia hackeada. Mentalidade blindada. O ecossistema definitivo para a elite do autodesenvolvimento.
+                    PABLife é um ecossistema de desenvolvimento humano que integra psicologia, nutrição e organização
                   </p>
 
                   <div className="hero-line flex gap-6">
@@ -380,7 +449,7 @@ export default function Home() {
               {/* --- DUALITY SECTION --- */}
               <Section className="flex flex-col md:flex-row justify-between w-full items-center md:items-end px-[5vw] md:px-[10vw]">
 
-                <div className="text-left mb-10 md:mb-0 opacity-60 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
+                <div className="duality-left text-left mb-10 md:mb-0 opacity-60 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Velho Você
                   </h3>
@@ -394,7 +463,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className="text-right z-10">
+                <div className="duality-right text-right z-10">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Novo Padrão
                   </h3>
@@ -402,7 +471,7 @@ export default function Home() {
                     DOMINE <span className="text-pink-500">TUDO.</span>
                   </h2>
                   <p className="text-lg text-white/90 mb-6 font-medium max-w-md ml-auto">
-                    Disciplina inabalável. Físico estético. Clareza mental absoluta. Bem-vindo à elite.
+                    Bem-estar. Produtividade com equlíbrio. Clareza mental absoluta. Bem-vindo à elite.
                   </p>
                   <div className="inline-flex gap-4 md:gap-8 font-mono text-[10px] md:text-xs tracking-widest text-pink-500 justify-end w-full">
                     <span className="border border-pink-500/30 px-2 py-1 bg-pink-500/10">BIOHACKING</span>
@@ -426,13 +495,13 @@ export default function Home() {
                       Pilares do<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-cyan-500">Ecossistema</span>
                     </h2>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+                  <div className="features-grid grid grid-cols-1 md:grid-cols-3 gap-8 ">
                     {[
                       { num: "01", title: "Psicologia", desc: "Suporte especializado para fortalecer sua inteligência emocional.", img: "/medusa.png" },
                       { num: "02", title: "Nutrição", desc: "Planos alimentares focados em performance e longevidade.", img: "/estatua.png" },
-                      { num: "03", title: "Tecnologia", desc: "O App que organiza sua rotina, treinos e evolução.", img: "/woman.png" }
+                      { num: "03", title: "ORGANIZAÇÃO ", desc: "O app que organiza sua rotina, metas e evolução.", img: "/woman.png" }
                     ].map((feature) => (
-                      <Card key={feature.num} className="group hover:border-pink-500/50 hover:bg-white/5 transition-all duration-500">
+                      <Card key={feature.num} className="feature-card group hover:border-pink-500/50 hover:bg-white/5 transition-all duration-500">
                         <div className='w-full flex justify-end relative'>
                           <div className="absolute inset-0 bg-pink-500/20 blur-[50px] opacity-0 group-hover:opacity-50 transition-opacity" />
                           <img src={feature.img} className='w-48 h-48 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500' alt="" />
@@ -448,7 +517,7 @@ export default function Home() {
 
               {/* --- CTA FINAL --- */}
               <Section className="items-center text-center">
-                <div className="relative z-10 bg-black/40 backdrop-blur-2xl p-16 border border-white/10 mx-auto max-w-3xl shadow-[0_0_100px_-20px_rgba(255,0,85,0.4)] rounded-3xl overflow-hidden">
+                <div className="cta-box relative z-10 bg-black/40 backdrop-blur-2xl p-16 border border-white/10 mx-auto max-w-3xl shadow-[0_0_100px_-20px_rgba(255,0,85,0.4)] rounded-3xl overflow-hidden">
                   <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
                   <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
 
@@ -461,6 +530,7 @@ export default function Home() {
               </Section>
 
             </Scroll>
+            <ScrollAnimations />
           </ScrollControls>
         </Suspense>
       </Canvas>

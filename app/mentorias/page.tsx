@@ -62,9 +62,9 @@ export default function Mentorias() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { step: '01', title: 'ESCOLHA', desc: 'Navegue pelo catálogo e encontre o mentor ideal.' },
+                { step: '01', title: 'ESCOLHA', desc: 'Navegue pelo app e Encontre sua mentoria ideal' },
                 { step: '02', title: 'AGENDE', desc: 'Selecione o melhor horário para a sua rotina.' },
-                { step: '03', title: 'PARTICIPE', desc: 'Conecte-se via vídeo ou presencialmente.' },
+                { step: '03', title: 'PARTICIPE', desc: 'Conecte-se pela mentoria desejada.' },
                 { step: '04', title: 'EVOLUA', desc: 'Aplique o conhecimento e acompanhe seu progresso.' },
               ].map((item) => (
                 <Card key={item.step} className="group hover:-translate-y-4 hover:border-pink-500/50 transition-all duration-500 relative overflow-hidden">

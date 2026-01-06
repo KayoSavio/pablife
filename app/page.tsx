@@ -184,10 +184,26 @@ function Model() {
   const statueData = useGLTF('/david_statues.glb')
   const glassesData = useGLTF('/oculos.glb')
 
-  const POS_INICIAL = { x: 0.8, y: 0, z: 8.8, rotY: 0.2 }
-  const POS_SECAO_2 = { x: -1, y: -0.5, z: 7, rotY: -0.5 }
-  const POS_SECAO_3 = { x: 4, y: -0.5, z: 8, rotY: 0.5 }
-  const POS_SECAO_4 = { x: 0, y: -1.5, z: 8.5, rotY: 0 }
+  // Detecta se é mobile baseado no viewport do Three.js
+  const isMobile = viewport.width < 6
+
+  // Posições diferentes para mobile vs desktop
+  // No mobile: estátua mais para direita/baixo e mais longe (menor na tela)
+  const POS_INICIAL = isMobile
+    ? { x: 2, y: 0, z: 8, rotY: 0.2 }  // Mobile: mais à direita e longe
+    : { x: 0.8, y: 0, z: 8.8, rotY: 0.2 }   // Desktop: posição original
+
+  const POS_SECAO_2 = isMobile
+    ? { x: -1.5, y: 0.4, z: 4, rotY: 0 }     // Mobile: centralizado, mais longe
+    : { x: -1, y: -0.5, z: 7, rotY: -0.5 }  // Desktop
+
+  const POS_SECAO_3 = isMobile
+    ? { x: 50, y: -1, z: -54, rotY: 10 }     // Mobile: à direita
+    : { x: 4, y: -0.5, z: 8, rotY: 0.5 }    // Desktop
+
+  const POS_SECAO_4 = isMobile
+    ? { x: 0, y: -2, z: 11, rotY: 0 }       // Mobile: mais abaixo e longe
+    : { x: 0, y: -1.5, z: 8.5, rotY: 0 }    // Desktop
 
   const combinedScene = useMemo(() => {
     const statueClone = statueData.scene.clone()
@@ -245,7 +261,7 @@ function Model() {
         y: POS_SECAO_4.rotY, duration: 1, ease: 'power2.inOut'
       }, 2)
 
-  }, [])
+  }, [isMobile, POS_INICIAL, POS_SECAO_2, POS_SECAO_3, POS_SECAO_4])
 
   useFrame((state, delta) => {
     if (!tl.current || !groupRef.current) return
@@ -267,6 +283,7 @@ function Model() {
     </group>
   )
 }
+
 
 const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <section className={`h-screen w-screen flex flex-col justify-center p-6 md:p-20 relative pointer-events-none ${className}`}>
@@ -426,23 +443,23 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <h1 className="hero-line text-4xl md:text-[5rem] font-black mb-4 leading-20  tracking-tighter mix-blend-screen">
+                  <h1 className="hero-line text-3xl md:text-[5rem] font-black mb-4 leading-tight md:leading-20 tracking-tighter mix-blend-screen">
                     <span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-300 to-gray-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">CONSTRUA</span>
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-[0_0_30px_rgba(255,0,85,0.4)]">SEU LEGADO</span>
                   </h1>
 
-                  <p className="hero-line text-lg md:text-2xl text-gray-400 max-w-xl leading-relaxed mb-12 border-l-2 border-pink-500 pl-6 bg-gradient-to-r from-white/5 to-transparent p-4 rounded-r-xl backdrop-blur-sm">
+                  <p className="hero-line text-base md:text-2xl text-gray-400 max-w-xl leading-relaxed mb-8 md:mb-12 border-l-2 border-pink-500 pl-4 md:pl-6 bg-gradient-to-r from-white/5 to-transparent p-3 md:p-4 rounded-r-xl backdrop-blur-sm">
                     PABLife é um ecossistema de desenvolvimento humano que integra psicologia, nutrição e organização
                   </p>
 
-                  <div className="hero-line flex gap-6">
-                    <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer">
-                      <Button variant="primary" size="lg" glow>
+                  <div className="hero-line flex flex-col md:flex-row gap-4 md:gap-6">
+                    <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
+                      <Button variant="primary" size="lg" glow className="w-full md:w-auto">
                         BAIXAR APP
                       </Button>
                     </a>
-                    <a href="https://www.instagram.com/pablife_app/" target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="lg">
+                    <a href="https://www.instagram.com/pablife_app/" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
+                      <Button variant="outline" size="lg" className="w-full md:w-auto">
                         INSTAGRAM
                       </Button>
                     </a>
@@ -453,14 +470,14 @@ export default function Home() {
               {/* --- DUALITY SECTION --- */}
               <Section className="flex flex-col md:flex-row justify-between w-full items-center md:items-end px-[5vw] md:px-[10vw]">
 
-                <div className="duality-left text-left mb-10 md:mb-0 opacity-60 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
+                <div className="duality-left text-left mb-10 opacity-60 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Velho Você
                   </h3>
-                  <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter text-white">
+                  <h2 className="text-2xl md:text-5xl font-black mb-3 md:mb-4 uppercase tracking-tighter text-white">
                     REFÉM DA<br /><span className="text-pink-500 drop-shadow-lg">DOPAMINA</span>
                   </h2>
-                  <ul className="text-white leading-relaxed font-mono text-sm space-y-2">
+                  <ul className="text-white leading-relaxed font-mono text-xs md:text-sm space-y-2">
                     <li className="flex items-center gap-2"><span className="text-red-500">×</span> Procrastinação Crônica</li>
                     <li className="flex items-center gap-2"><span className="text-red-500">×</span> Físico Estagnado</li>
                     <li className="flex items-center gap-2"><span className="text-red-500">×</span> Piloto Automático</li>
@@ -471,13 +488,13 @@ export default function Home() {
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Novo Padrão
                   </h3>
-                  <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase tracking-tight leading-none text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                  <h2 className="text-3xl md:text-7xl font-black mb-4 md:mb-6 uppercase tracking-tight leading-none text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
                     DOMINE <span className="text-pink-500">TUDO.</span>
                   </h2>
-                  <p className="text-lg text-white/90 mb-6 font-medium max-w-md ml-auto">
-                    Bem-estar. Produtividade com equlíbrio. Clareza mental absoluta. Bem-vindo à elite.
+                  <p className="text-base md:text-lg text-white/90 mb-4 md:mb-6 font-medium max-w-md md:ml-auto">
+                    Bem-estar. Produtividade com equilíbrio. Clareza mental absoluta. Bem-vindo à elite.
                   </p>
-                  <div className="inline-flex gap-4 md:gap-8 font-mono text-[10px] md:text-xs tracking-widest text-pink-500 justify-end w-full">
+                  <div className="flex flex-wrap gap-2 md:gap-8 font-mono text-[9px] md:text-xs tracking-widest text-pink-500 md:justify-end w-full">
                     <span className="border border-pink-500/30 px-2 py-1 bg-pink-500/10">BIOHACKING</span>
                     <span className="border border-pink-500/30 px-2 py-1 bg-pink-500/10">LIFESTYLE</span>
                     <span className="border border-pink-500/30 px-2 py-1 bg-pink-500/10">NETWORKING</span>
@@ -487,7 +504,7 @@ export default function Home() {
               </Section>
 
               {/* --- FEATURES SECTION --- */}
-              <Section className="relative">
+              <Section className="relative px-4 md:px-10 lg:px-20">
                 {/* Background Effect */}
                 <div className="absolute inset-0 w-full h-full opacity-30 pointer-events-none">
                   <Squares color="#ff0055" squareSize={40} speed={0.5} />
@@ -510,7 +527,7 @@ export default function Home() {
                           <div className="absolute inset-0 bg-pink-500/20 blur-[50px] opacity-0 group-hover:opacity-50 transition-opacity" />
                           <img src={feature.img} className='w-48 h-48 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500' alt="" />
                         </div>
-                        <span className="font-mono text-xs text-pink-500 mb-2 block tracking-widest">{feature.num} /// MODULE</span>
+                        <span className="font-mono text-xs text-pink-500 mb-2 block tracking-widest">{feature.num} /// Módulo </span>
                         <h3 className="text-3xl font-black text-white mb-4 uppercase tracking-tighter group-hover:translate-x-2 transition-transform">{feature.title}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">{feature.desc}</p>
                       </Card>
@@ -529,8 +546,8 @@ export default function Home() {
                   <h3 className="text-5xl md:text-8xl font-black mb-12 uppercase italic tracking-tighter leading-none">
                     "Não é sorte.<br />É <span className="text-cyan-400">método</span>."
                   </h3>
-                  <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer">
-                    <Button variant="secondary" size="lg" glow className="w-full md:w-auto min-w-[300px] text-lg py-6">BAIXAR PABLIFE</Button>
+                  <a href="https://apps.apple.com/br/app/pablife-app/id6756442379" target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="secondary" size="lg" glow className="w-full md:w-auto md:min-w-[300px] text-base md:text-lg py-4 md:py-6 px-6 md:px-10">BAIXAR PABLIFE</Button>
                   </a>
                 </div>
               </Section>

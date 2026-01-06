@@ -33,7 +33,7 @@ export default function Contato() {
             <div className="w-12 h-12 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform relative z-10 border border-pink-500/30">📸</div>
             <h3 className="font-bold text-white mb-2 uppercase tracking-wider relative z-10">Instagram</h3>
             <p className="text-xs text-gray-400 mb-4 relative z-10">Novidades e direct</p>
-            <a href="https://instagram.com/pablife" target="_blank" className="text-cyan-400 hover:text-cyan-300 font-mono text-sm relative z-10 drop-shadow-[0_0_10px_rgba(0,255,255,0.5)]">@pablife_app</a>
+            <a href="https://www.instagram.com/pablife_app/" target="_blank" className="text-cyan-400 hover:text-cyan-300 font-mono text-sm relative z-10 drop-shadow-[0_0_10px_rgba(0,255,255,0.5)]">@pablife_app</a>
           </Card>
 
           <Card className="text-center bg-black/40 hover:border-pink-500/50 group transition-all duration-500 relative overflow-hidden">

@@ -286,7 +286,7 @@ function Model() {
 
 
 const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-  <section className={`h-screen w-screen flex flex-col justify-center p-6 md:p-20 relative pointer-events-none ${className}`}>
+  <section className={`min-h-screen md:h-screen w-screen flex flex-col justify-center p-6 md:p-20 relative pointer-events-none ${className}`}>
     <div className="pointer-events-auto w-full">
       {children}
     </div>
@@ -368,6 +368,15 @@ const ScrollAnimations = () => {
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar se é mobile
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const [playBg, { stop: stopBg }] = useSound('/ambient.mp3', {
     loop: true,
@@ -391,7 +400,6 @@ export default function Home() {
 
       <Navbar />
 
-      {/* Floating Sound Toggle */}
       <button
         onClick={toggleSound}
         className="fixed bottom-8 right-8 z-50 text-xs font-mono uppercase tracking-widest border border-white/20 px-4 py-2 rounded-full hover:bg-white/10 hover:border-pink-500 transition-all flex items-center gap-2 bg-black/50 backdrop-blur"
@@ -427,7 +435,7 @@ export default function Home() {
         </EffectComposer>
 
         <Suspense fallback={null}>
-          <ScrollControls pages={4} damping={0.3}>
+          <ScrollControls pages={isMobile ? 5.5 : 4} damping={0.3}>
             <Model />
             <Scroll html style={{ width: '100%' }}>
 
@@ -468,9 +476,9 @@ export default function Home() {
               </Section>
 
               {/* --- DUALITY SECTION --- */}
-              <Section className="flex flex-col md:flex-row justify-between w-full items-center md:items-end px-[5vw] md:px-[10vw]">
+              <Section className="flex flex-col md:flex-row justify-between w-full items-center md:items-end px-[5vw] md:px-[10vw] mb-40 md:mb-0">
 
-                <div className="duality-left text-left mb-10 opacity-60 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
+                <div className="duality-left text-left mb-4 hover:opacity-100 transition-opacity duration-500 backdrop-blur-md p-8 rounded-2xl border border-white/5 bg-black/20">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Velho Você
                   </h3>
@@ -484,7 +492,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className="duality-right text-right z-10">
+                <div className=" p-8 rounded-2xl border border-white/5 bg-black/20 duality-right text-right z-10">
                   <h3 className="text-xl md:text-2xl font-bold mb-4 uppercase tracking-widest text-cyan-400">
                     /// O Novo Padrão
                   </h3>
@@ -504,7 +512,7 @@ export default function Home() {
               </Section>
 
               {/* --- FEATURES SECTION --- */}
-              <Section className="relative px-4 md:px-10 lg:px-20">
+              <Section className="relative z-20 px-4 md:px-10 lg:px-20">
                 {/* Background Effect */}
                 <div className="absolute inset-0 w-full h-full opacity-30 pointer-events-none">
                   <Squares color="#ff0055" squareSize={40} speed={0.5} />
@@ -516,7 +524,7 @@ export default function Home() {
                       Pilares do<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-cyan-500">Ecossistema</span>
                     </h2>
                   </div>
-                  <div className="features-grid grid grid-cols-1 md:grid-cols-3 gap-8 ">
+                  <div className="features-grid grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 md:pb-0">
                     {[
                       { num: "01", title: "Psicologia", desc: "Suporte especializado para fortalecer sua inteligência emocional.", img: "/medusa.png" },
                       { num: "02", title: "Nutrição", desc: "Planos alimentares focados em performance e longevidade.", img: "/estatua.png" },
@@ -537,8 +545,8 @@ export default function Home() {
               </Section>
 
               {/* --- CTA FINAL --- */}
-              <Section className="items-center text-center">
-                <div className="cta-box relative z-10 bg-black/40 backdrop-blur-2xl p-16 border border-white/10 mx-auto max-w-3xl shadow-[0_0_100px_-20px_rgba(255,0,85,0.4)] rounded-3xl overflow-hidden">
+              <Section className="items-center text-center z-10 mt-8 md:mt-0 pb-16 md:pb-0">
+                <div className="cta-box relative z-10 bg-black/40 backdrop-blur-2xl p-8 md:p-16 border border-white/10 mx-auto max-w-3xl shadow-[0_0_100px_-20px_rgba(255,0,85,0.4)] rounded-3xl overflow-hidden">
                   <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
                   <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
 
